@@ -1,9 +1,30 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { KeyRound } from 'lucide-react';
+import { BriefcaseBusiness, KeyRound, ShieldCheck, UserRound } from 'lucide-react';
 import api from '../api/client';
 import AlertBox from '../components/AlertBox.jsx';
 import { useAuth } from '../state/AuthContext.jsx';
+
+const demoAccounts = [
+  {
+    role: 'ADMIN',
+    username: 'admin',
+    password: 'Password@123',
+    icon: ShieldCheck,
+  },
+  {
+    role: 'MANAGER',
+    username: 'manager',
+    password: 'Password@123',
+    icon: BriefcaseBusiness,
+  },
+  {
+    role: 'EMPLOYEE',
+    username: 'employee',
+    password: 'Password@123',
+    icon: UserRound,
+  },
+];
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -27,6 +48,11 @@ export default function LoginPage() {
     }
   };
 
+  const selectAccount = (account) => {
+    setError('');
+    setForm({ username: account.username, password: account.password });
+  };
+
   return (
     <div className="auth-page">
       <form className="auth-card" onSubmit={handleSubmit}>
@@ -34,6 +60,26 @@ export default function LoginPage() {
         <h1>SEMS Login</h1>
         <p>Authenticate with password before email OTP verification.</p>
         <AlertBox message={error} />
+        <div className="demo-account-grid" aria-label="Demo accounts">
+          {demoAccounts.map((account) => {
+            const Icon = account.icon;
+            const selected = form.username === account.username;
+            return (
+              <button
+                key={account.username}
+                className={`demo-account ${selected ? 'selected' : ''}`}
+                type="button"
+                onClick={() => selectAccount(account)}
+              >
+                <Icon size={18} />
+                <span>
+                  <strong>{account.role}</strong>
+                  <small>{account.username}</small>
+                </span>
+              </button>
+            );
+          })}
+        </div>
         <label className="form-label">Username</label>
         <input
           className="form-control"

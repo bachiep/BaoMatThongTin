@@ -43,7 +43,7 @@ export default function AppLayout() {
         <header className="topbar">
           <div>
             <div className="topbar-title">Security Administration Portal</div>
-            <div className="topbar-subtitle">{currentUser?.username} · {currentUser?.roles?.join(', ')}</div>
+            <div className="topbar-subtitle">{currentUser?.username} - {currentUser?.roles?.join(', ')}</div>
           </div>
           <button className="btn btn-outline-secondary btn-sm icon-button" onClick={handleLogout}>
             <LogOut size={16} />

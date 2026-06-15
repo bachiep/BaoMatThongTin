@@ -53,6 +53,52 @@ body {
   background: #dff3ef;
 }
 
+.demo-account-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.demo-account {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--text);
+  padding: 10px 6px;
+  text-align: center;
+}
+
+.demo-account:hover,
+.demo-account.selected {
+  border-color: var(--primary);
+  background: #e6f5f2;
+  color: #0f5c56;
+}
+
+.demo-account span {
+  min-width: 0;
+}
+
+.demo-account strong,
+.demo-account small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.demo-account strong {
+  font-size: 12px;
+}
+
+.demo-account small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .otp-input {
   font-size: 22px;
   letter-spacing: 0;
@@ -237,6 +283,18 @@ body {
   gap: 8px;
 }
 
+.user-create-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+  gap: 14px;
+  align-items: end;
+}
+
+.user-create-submit {
+  min-height: 38px;
+  justify-content: center;
+}
+
 .metric-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -292,7 +350,8 @@ body {
   }
 
   .grid.two,
-  .metric-grid {
+  .metric-grid,
+  .user-create-grid {
     grid-template-columns: 1fr;
   }
 }
