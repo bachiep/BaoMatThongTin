@@ -151,20 +151,27 @@ backend se sinh OTP, luu vao database va gui OTP toi email cua user. Neu SMTP
 chua cau hinh dung hoac Gmail tu choi gui mail, API login se tra loi loi ro rang
 thay vi bao thanh cong gia.
 
-De gui OTP qua email that, can Gmail App Password.
+De gui OTP qua email that, can Gmail App Password. Backend tu dong doc file
+`.env` o thu muc goc project neu file nay ton tai. File `.env` da nam trong
+`.gitignore`, khong duoc commit len Git.
 
 Mau cau hinh:
 
-```powershell
-$env:MAIL_HOST="smtp.gmail.com"
-$env:MAIL_PORT="465"
-$env:MAIL_USERNAME="your_email@gmail.com"
-$env:MAIL_PASSWORD="your_gmail_app_password"
-$env:MAIL_FROM="SEMS <your_email@gmail.com>"
-$env:MAIL_SMTP_AUTH="true"
-$env:MAIL_SMTP_STARTTLS_ENABLE="false"
-$env:MAIL_SMTP_SSL_ENABLE="true"
+```env
+APP_NAME=SEMS
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME=your_email@gmail.com
+MAIL_PASSWORD=your_gmail_app_password
+MAIL_FROM=SEMS <your_email@gmail.com>
+MAIL_SMTP_AUTH=true
+MAIL_SMTP_STARTTLS_ENABLE=false
+MAIL_SMTP_SSL_ENABLE=true
 ```
+
+Project cung chap nhan bo bien cu `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`,
+`SMTP_PASS`, `SMTP_FROM`, `SMTP_SECURE`. Tuy nhien khi dung Gmail cong 465,
+nen them `MAIL_SMTP_STARTTLS_ENABLE=false` de tranh tron STARTTLS voi SSL.
 
 Khong dung mat khau Gmail chinh. Hay dung App Password cua Gmail. Khong commit
 Gmail App Password len Git.
