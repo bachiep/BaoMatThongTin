@@ -146,6 +146,11 @@ JWT secret phai dai it nhat 32 ky tu. Khong commit secret that len Git.
 
 ## 6. Cau hinh Gmail SMTP cho OTP
 
+OTP email la luong demo chinh cua he thong. Sau khi username/password dung,
+backend se sinh OTP, luu vao database va gui OTP toi email cua user. Neu SMTP
+chua cau hinh dung hoac Gmail tu choi gui mail, API login se tra loi loi ro rang
+thay vi bao thanh cong gia.
+
 De gui OTP qua email that, can Gmail App Password.
 
 Mau cau hinh:
@@ -161,15 +166,20 @@ $env:MAIL_SMTP_STARTTLS_ENABLE="false"
 $env:MAIL_SMTP_SSL_ENABLE="true"
 ```
 
-Khong dung mat khau Gmail chinh. Hay dung App Password cua Gmail.
+Khong dung mat khau Gmail chinh. Hay dung App Password cua Gmail. Khong commit
+Gmail App Password len Git.
 
 Tai khoan seed mac dinh dung email local nhu `admin@sems.local`, nen email that co the khong nhan duoc OTP neu chua doi email. Khi demo email that, co the:
 
-- Dang ky/tai tao mot tai khoan co email that.
-- Hoac cap nhat email cua tai khoan demo trong MySQL.
-- Hoac dung bang `otp_tokens` de kiem tra OTP trong moi truong dev neu email bi delay.
+- Dang nhap bang admin seed.
+- Vao User Management tren frontend.
+- Tao mot tai khoan `MANAGER` hoac `EMPLOYEE` voi email Gmail that ma nhom kiem soat.
+- Dang xuat admin, dang nhap bang tai khoan moi vua tao.
+- Lay OTP trong hop thu Gmail va verify OTP.
 
-Phuong an demo OTP co the chot rieng tuy yeu cau nhom.
+Bang `otp_tokens` trong MySQL chi nen dung de doi chieu khi dev hoac khi can
+chung minh he thong co luu OTP va thoi gian het han. Khi demo chinh thuc, uu tien
+mo hop thu email de xac nhan OTP that.
 
 ## 7. Chay backend
 

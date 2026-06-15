@@ -42,6 +42,14 @@ public class GlobalExceptionHandler {
         return buildError(HttpStatus.TOO_MANY_REQUESTS, exception.getMessage(), request, null);
     }
 
+    @ExceptionHandler(EmailDeliveryException.class)
+    public ResponseEntity<ErrorResponse> handleEmailDelivery(
+            EmailDeliveryException exception,
+            HttpServletRequest request
+    ) {
+        return buildError(HttpStatus.SERVICE_UNAVAILABLE, exception.getMessage(), request, null);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleValidation(
             MethodArgumentNotValidException exception,
